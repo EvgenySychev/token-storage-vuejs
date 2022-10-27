@@ -7,21 +7,18 @@
           <table class="table table-striped">
             <thead>
             <tr>
+              <th>ID</th>
               <th>Domain name</th>
               <th>Token</th>
               <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr
+            <token-list-row
               v-for="token in tokens"
-              :key="token.id">
-              <td>{{ token.domain }}</td>
-              <td>{{ token.value }}</td>
-              <td>
-                <button>Delete</button>
-              </td>
-            </tr>
+              :key="token.id"
+              :token="token"
+              @click.native="onTokenClicked(token.id)"/>
             </tbody>
           </table>
         </div>
@@ -31,8 +28,13 @@
 </template>
 
 <script>
+import TokenListRow from './TokenListRow'
+
 export default {
   name: 'TokenList',
+  components: {
+    TokenListRow
+  },
   data () {
     return {
       tokens: [
@@ -60,6 +62,11 @@ export default {
     }
   },
   created () {
+  },
+  methods: {
+    onTokenClicked (tokenId) {
+      console.log(tokenId)
+    }
   }
 }
 </script>

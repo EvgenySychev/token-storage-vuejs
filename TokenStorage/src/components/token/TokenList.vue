@@ -27,8 +27,9 @@
     <b-modal
       ref="deleteConfirmModal"
       title="Confirm your action"
+      @ok="onDeleteConfirm"
       @hide="onDeleteModalHide">
-      <p class="my-4">Are you sure you want to delete this owner?</p>
+      <p class="my-4">Are you sure you want to delete this token {{ selectedTokenId }}?</p>
     </b-modal>
 
     <b-modal
@@ -37,6 +38,7 @@
       :ok-only="true">
       <p class="my-4">{{ alertModalContent }}</p>
     </b-modal>
+
   </div>
 </template>
 
@@ -82,14 +84,23 @@ export default {
   methods: {
     onTokenClicked (tokenId) {
       console.log(tokenId)
+    },
+    deleteToken (tokenId) {
+      this.selectedTokenId = tokenId
+      console.log(tokenId + '!!')
+      this.$refs.deleteConfirmModal.show(tokenId)
+    },
+    onDeleteModalHide () {
+      this.selectedTokenId = null
+    },
+    onDeleteConfirm () {
+      console.log(this.selectedTokenId)
+      this.tokens.filter(f => f.id !== this.selectedTokenId)
+      console.log(this.tokens)
+      this.alertModalTitle = 'Successfully'
+      this.alertModalContent = 'Successfully deleted token'
+      this.$refs.alertModal.show()
     }
-  },
-  deleteToken (tokenId) {
-    this.selectedTokenId = tokenId
-    this.$refs.deleteConfirmModal.show()
-  },
-  onDeleteModalHide () {
-    this.selectedTokenId = null
   }
 }
 </script>

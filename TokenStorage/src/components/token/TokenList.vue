@@ -18,12 +18,25 @@
               v-for="token in tokens"
               :key="token.id"
               :token="token"
-              @click.native="onTokenClicked(token.id)"/>
+              @delete="deleteToken"/>
             </tbody>
           </table>
         </div>
       </b-col>
     </b-row>
+    <b-modal
+      ref="deleteConfirmModal"
+      title="Confirm your action"
+      @hide="onDeleteModalHide">
+      <p class="my-4">Are you sure you want to delete this owner?</p>
+    </b-modal>
+
+    <b-modal
+      ref="alertModal"
+      :title="alertModalTitle"
+      :ok-only="true">
+      <p class="my-4">{{ alertModalContent }}</p>
+    </b-modal>
   </div>
 </template>
 
@@ -58,7 +71,10 @@ export default {
           domain: 'https://tra-ta-ta4.ru',
           value: '1234-4567-8904'
         }
-      ]
+      ],
+      selectedTokenId: null,
+      alertModalTitle: '',
+      alertModalContent: ''
     }
   },
   created () {
@@ -67,6 +83,13 @@ export default {
     onTokenClicked (tokenId) {
       console.log(tokenId)
     }
+  },
+  deleteToken (tokenId) {
+    this.selectedTokenId = tokenId
+    this.$refs.deleteConfirmModal.show()
+  },
+  onDeleteModalHide () {
+    this.selectedTokenId = null
   }
 }
 </script>

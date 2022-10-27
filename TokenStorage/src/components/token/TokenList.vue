@@ -56,22 +56,22 @@ export default {
         {
           id: '1',
           domain: 'https://tra-ta-ta1.ru',
-          value: '1234-4567-8901'
+          value: '1234-4567-8901-0000'
         },
         {
           id: '2',
           domain: 'https://tra-ta-ta2.ru',
-          value: '1234-4567-8902'
+          value: '1234-4567-8902-0000'
         },
         {
           id: '3',
           domain: 'https://tra-ta-ta3.ru',
-          value: '1234-4567-8903'
+          value: '1234-4567-8903-0000'
         },
         {
           id: '4',
           domain: 'https://tra-ta-ta4.ru',
-          value: '1234-4567-8904'
+          value: '1234-4567-8904-0000'
         }
       ],
       selectedTokenId: null,
@@ -94,9 +94,7 @@ export default {
       this.selectedTokenId = null
     },
     onDeleteConfirm () {
-      console.log(this.selectedTokenId)
-      this.tokens.filter(f => f.id !== this.selectedTokenId)
-      console.log(this.tokens)
+      // запросить у сервера список пользователей
       this.alertModalTitle = 'Successfully'
       this.alertModalContent = 'Successfully deleted token'
       this.$refs.alertModal.show()

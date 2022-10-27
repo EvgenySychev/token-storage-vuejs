@@ -20,7 +20,8 @@
   <b-modal
     ref="alertModal"
     :title="alertModalTitle"
-    :ok-only="true">
+    :ok-only="true"
+    @ok="onRedirectTokenList">
     <p class="my-4">{{ alertModalContent }}</p>
   </b-modal>
 </div>
@@ -42,6 +43,10 @@ export default {
       this.alertModalTitle = 'Successfully'
       this.alertModalContent = 'Successfully added token'
       this.$refs.alertModal.show()
+    },
+    onRedirectTokenList () {
+      // запросить у сервера список пользователей
+      this.$router.push({ name: 'TokenList' })
     }
   }
 }

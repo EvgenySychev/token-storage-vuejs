@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/Home'
 import NotFound from '../components/error-pages/NotFound'
 import TokenList from '../components/token/TokenList'
+import AddTokenPage from '../components/token/AddTokenPage'
 
 Vue.use(Router)
 
@@ -10,12 +10,12 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'Home',
-      component: Home
+      path: '/add-token',
+      name: 'AddTokenPage',
+      component: AddTokenPage
     },
     {
-      path: '/token/list',
+      path: '/tokens',
       name: 'TokenList',
       component: TokenList
     },

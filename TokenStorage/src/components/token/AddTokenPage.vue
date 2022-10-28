@@ -50,15 +50,15 @@ export default {
   },
   methods: {
     onAddClick () {
-      this.newId = this._uid
-      this.newToken = uuid.v1()
-      this.newJson = JSON.stringify(this.tokens.push({id: this.newId, value: this.newToken, domain: this.newDomain, organizationName: 'New'}))
       this.alertModalTitle = 'Successfully'
       this.alertModalContent = 'Successfully added token'
       this.$refs.alertModal.show()
     },
     onRedirectTokenList () {
       // запросить у сервера список пользователей
+      this.newId = this._uid
+      this.newToken = uuid.v1()
+      this.newJson = JSON.stringify(this.tokens.push({id: this.newId, value: this.newToken, domain: this.newDomain, organizationName: 'New'}))
       this.$router.push({ name: 'TokenList' })
     }
   }

@@ -4,6 +4,7 @@
     <thead>
     <tr>
       <th>Название домена</th>
+      <th>Название организации</th>
       <th>Возможное действие</th>
     </tr>
     </thead>
@@ -11,6 +12,9 @@
     <tr>
       <td>
         <input v-model="newDomain" type="text" >
+      </td>
+      <td>
+        <input v-model="newOrganizationName" type="text" >
       </td>
       <td>
         <b-button variant="success" @click="onAddClick()">Добавить</b-button>
@@ -40,6 +44,7 @@ export default {
   data () {
     return {
       newDomain: 'https://',
+      newOrganizationName: null,
       tokens: json,
       newId: null,
       newToken: null,
@@ -57,7 +62,7 @@ export default {
     onRedirectTokenList () {
       this.newId = this._uid
       this.newToken = uuid.v1()
-      this.newJson = JSON.stringify(this.tokens.push({id: this.newId, value: this.newToken, domain: this.newDomain, organizationName: 'Новая организация'}))
+      this.newJson = JSON.stringify(this.tokens.push({id: this.newId, value: this.newToken, domain: this.newDomain, organizationName: this.newOrganizationName}))
       this.$router.push({ name: 'TokenList' })
     }
   }

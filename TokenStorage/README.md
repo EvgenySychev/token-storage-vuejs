@@ -1,6 +1,9 @@
 # token-storage-vuejs
 
-> Token Storage
+> Интерфейс для сервиса хранения токенов
+
+Исходный список токенов хранится в файле data.json
+
 
 ## Build Setup
 

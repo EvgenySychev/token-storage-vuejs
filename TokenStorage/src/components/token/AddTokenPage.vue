@@ -57,7 +57,7 @@ export default {
     onRedirectTokenList () {
       this.newId = this._uid
       this.newToken = uuid.v1()
-      this.newJson = JSON.stringify(this.tokens.push({id: this.newId, value: this.newToken, domain: this.newDomain, organizationName: 'New'}))
+      this.newJson = JSON.stringify(this.tokens.push({id: this.newId, value: this.newToken, domain: this.newDomain, organizationName: 'Новая организация'}))
       this.$router.push({ name: 'TokenList' })
     }
   }

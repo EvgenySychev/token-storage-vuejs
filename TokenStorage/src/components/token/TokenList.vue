@@ -10,6 +10,7 @@
               <th>ID</th>
               <th>Domain name</th>
               <th>Token</th>
+              <th>Organization</th>
               <th>Action</th>
             </tr>
             </thead>
@@ -18,7 +19,7 @@
               v-for="token in tokens"
               :key="token.id"
               :token="token"
-              @delete="deleteToken"/>
+              @delete="deleteToken(token)"/>
             </tbody>
           </table>
         </div>
@@ -29,9 +30,7 @@
       title="Confirm your action"
       @ok="onDeleteConfirm"
       @hide="onDeleteModalHide">
-      <p class="my-4">Are you sure you want to delete this token {{
-          selectedTokenId
-        }}?</p>
+      <p class="my-4">Are you sure you want to delete token from {{selectedOrganization}} organization?</p>
     </b-modal>
 
     <b-modal
@@ -56,7 +55,8 @@ export default {
   data () {
     return {
       tokens: json,
-      selectedTokenId: null,
+      selectedOrganization: null,
+      selectedToken: null,
       alertModalTitle: '',
       alertModalContent: ''
     }
@@ -64,15 +64,16 @@ export default {
   created () {
   },
   methods: {
-    deleteToken (tokenId) {
-      this.selectedTokenId = tokenId
-      this.$refs.deleteConfirmModal.show(tokenId)
+    deleteToken (token) {
+      this.selectedToken = token
+      this.selectedOrganization = token.organizationName
+      this.$refs.deleteConfirmModal.show()
     },
     onDeleteModalHide () {
-      this.selectedTokenId = null
+      this.selectedToken = null
     },
     onDeleteConfirm () {
-      // запросить у сервера список пользователей
+      this.tokens.splice(this.tokens.indexOf(this.selectedToken), 1)
       this.alertModalTitle = 'Successfully'
       this.alertModalContent = 'Successfully deleted token'
       this.$refs.alertModal.show()

@@ -3,6 +3,7 @@
     <td>{{ token.id }}</td>
     <td>{{ token.domain }}</td>
     <td>{{ token.value }}</td>
+    <td>{{ token.organizationName }}</td>
     <td>
       <b-button variant="danger" @click="onDeleteClick">Delete</b-button>
     </td>

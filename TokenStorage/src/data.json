@@ -2,22 +2,26 @@
     {
       "id": 1,
       "domain": "https://tra-ta-ta1.ru",
-      "value": "1234-4567-8901-0000"
+      "value": "1234-4567-8901-0000",
+      "organizationName": "First"
     },
     {
       "id": 2,
       "domain": "https://tra-ta-ta2.ru",
-      "value": "1234-4567-8902-0000"
+      "value": "1234-4567-8902-0000",
+      "organizationName": "Second"
     },
     {
       "id": 3,
       "domain": "https://tra-ta-ta3.ru",
-      "value": "1234-4567-8903-0000"
+      "value": "1234-4567-8903-0000",
+      "organizationName": "Third"
     },
     {
       "id": 4,
       "domain": "https://tra-ta-ta4.ru",
-      "value": "1234-4567-8904-0000"
+      "value": "1234-4567-8904-0000",
+      "organizationName": "Fourth"
     }
   ]
 

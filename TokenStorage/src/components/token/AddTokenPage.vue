@@ -3,8 +3,8 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Token</th>
-      <th>Action</th>
+      <th>Название домена</th>
+      <th>Возможное действие</th>
     </tr>
     </thead>
     <tbody>
@@ -13,7 +13,7 @@
         <input v-model="newDomain" type="text" >
       </td>
       <td>
-        <b-button variant="success" @click="onAddClick()">ADD</b-button>
+        <b-button variant="success" @click="onAddClick()">Добавить</b-button>
       </td>
     </tr>
     </tbody>
@@ -50,12 +50,11 @@ export default {
   },
   methods: {
     onAddClick () {
-      this.alertModalTitle = 'Successfully'
-      this.alertModalContent = 'Successfully added token'
+      this.alertModalTitle = 'Успешно'
+      this.alertModalContent = 'Токен добавлен'
       this.$refs.alertModal.show()
     },
     onRedirectTokenList () {
-      // запросить у сервера список пользователей
       this.newId = this._uid
       this.newToken = uuid.v1()
       this.newJson = JSON.stringify(this.tokens.push({id: this.newId, value: this.newToken, domain: this.newDomain, organizationName: 'New'}))

@@ -7,11 +7,10 @@
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>ID</th>
-              <th>Domain name</th>
-              <th>Token</th>
-              <th>Organization</th>
-              <th>Action</th>
+              <th>Название домена</th>
+              <th>Токен</th>
+              <th>Организация</th>
+              <th>Возможное действие</th>
             </tr>
             </thead>
             <tbody>
@@ -27,10 +26,10 @@
     </b-row>
     <b-modal
       ref="deleteConfirmModal"
-      title="Confirm your action"
+      title="Подтвердите действие"
       @ok="onDeleteConfirm"
       @hide="onDeleteModalHide">
-      <p class="my-4">Are you sure you want to delete token from {{selectedOrganization}} organization?</p>
+      <p class="my-4">Вы точно хотите удалить данный токен для организации {{selectedOrganization}}?</p>
     </b-modal>
 
     <b-modal
@@ -74,8 +73,8 @@ export default {
     },
     onDeleteConfirm () {
       this.tokens.splice(this.tokens.indexOf(this.selectedToken), 1)
-      this.alertModalTitle = 'Successfully'
-      this.alertModalContent = 'Successfully deleted token'
+      this.alertModalTitle = 'Успешно'
+      this.alertModalContent = 'Токен удален'
       this.$refs.alertModal.show()
     }
   }

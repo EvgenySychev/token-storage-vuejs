@@ -4,8 +4,8 @@
     type="dark"
     variant="info">
     <b-navbar-nav>
-      <b-nav-item :to="{ name: 'TokenList' }">Tokens</b-nav-item>
-      <b-nav-item :to="{ name: 'AddTokenPage' }">Add Token</b-nav-item>
+      <b-nav-item :to="{ name: 'TokenList' }">Список всех токенов</b-nav-item>
+      <b-nav-item :to="{ name: 'AddTokenPage' }">Добавить токен</b-nav-item>
     </b-navbar-nav>
   </b-navbar>
 </template>

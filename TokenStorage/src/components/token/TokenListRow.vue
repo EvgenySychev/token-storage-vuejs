@@ -1,11 +1,10 @@
 <template>
   <tr>
-    <td>{{ token.id }}</td>
     <td>{{ token.domain }}</td>
     <td>{{ token.value }}</td>
     <td>{{ token.organizationName }}</td>
     <td>
-      <b-button variant="danger" @click="onDeleteClick">Delete</b-button>
+      <b-button variant="danger" @click="onDeleteClick">Удалить</b-button>
     </td>
   </tr>
 </template>

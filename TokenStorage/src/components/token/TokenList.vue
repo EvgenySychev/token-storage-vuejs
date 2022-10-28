@@ -29,7 +29,9 @@
       title="Confirm your action"
       @ok="onDeleteConfirm"
       @hide="onDeleteModalHide">
-      <p class="my-4">Are you sure you want to delete this token {{ selectedTokenId }}?</p>
+      <p class="my-4">Are you sure you want to delete this token {{
+          selectedTokenId
+        }}?</p>
     </b-modal>
 
     <b-modal
@@ -44,6 +46,7 @@
 
 <script>
 import TokenListRow from './TokenListRow'
+import json from '../../data.json'
 
 export default {
   name: 'TokenList',
@@ -52,28 +55,7 @@ export default {
   },
   data () {
     return {
-      tokens: [
-        {
-          id: '1',
-          domain: 'https://tra-ta-ta1.ru',
-          value: '1234-4567-8901-0000'
-        },
-        {
-          id: '2',
-          domain: 'https://tra-ta-ta2.ru',
-          value: '1234-4567-8902-0000'
-        },
-        {
-          id: '3',
-          domain: 'https://tra-ta-ta3.ru',
-          value: '1234-4567-8903-0000'
-        },
-        {
-          id: '4',
-          domain: 'https://tra-ta-ta4.ru',
-          value: '1234-4567-8904-0000'
-        }
-      ],
+      tokens: json,
       selectedTokenId: null,
       alertModalTitle: '',
       alertModalContent: ''
@@ -82,12 +64,8 @@ export default {
   created () {
   },
   methods: {
-    onTokenClicked (tokenId) {
-      console.log(tokenId)
-    },
     deleteToken (tokenId) {
       this.selectedTokenId = tokenId
-      console.log(tokenId + '!!')
       this.$refs.deleteConfirmModal.show(tokenId)
     },
     onDeleteModalHide () {

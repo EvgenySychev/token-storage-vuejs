@@ -9,9 +9,11 @@
     </thead>
     <tbody>
     <tr>
-      <td>Token</td>
       <td>
-        <b-button variant="success" @click="onAddClick">ADD</b-button>
+        <input v-model="newDomain" type="text" >
+      </td>
+      <td>
+        <b-button variant="success" @click="onAddClick()">ADD</b-button>
       </td>
     </tr>
     </tbody>
@@ -30,16 +32,27 @@
 
 <script>
 
+import json from '../../data.json'
+import { uuid } from 'vue-uuid'
+
 export default {
   name: 'AddTokenPage',
   data () {
     return {
+      newDomain: 'https://',
+      tokens: json,
+      newId: null,
+      newToken: null,
+      newJson: null,
       alertModalTitle: '',
       alertModalContent: ''
     }
   },
   methods: {
     onAddClick () {
+      this.newId = this._uid
+      this.newToken = uuid.v1()
+      this.newJson = JSON.stringify(this.tokens.push({id: this.newId, value: this.newToken, domain: this.newDomain}))
       this.alertModalTitle = 'Successfully'
       this.alertModalContent = 'Successfully added token'
       this.$refs.alertModal.show()

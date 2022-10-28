@@ -15,6 +15,11 @@ export default new Router({
       component: AddTokenPage
     },
     {
+      path: '/',
+      name: 'TokenList',
+      component: TokenList
+    },
+    {
       path: '/tokens',
       name: 'TokenList',
       component: TokenList
